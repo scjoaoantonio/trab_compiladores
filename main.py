@@ -80,21 +80,6 @@ comentario = {
 }
 comentario_key = comentario.keys()
 
-numeros = {
-    '0': 'Numero 0',
-    '1': 'Numero 1',
-    '2': 'Numero 2',
-    '3': 'Numero 3',
-    '4': 'Numero 4',
-    '5': 'Numero 5',
-    '6': 'Numero 6',
-    '7': 'Numero 7',
-    '8': 'Numero 8',
-    '9': 'Numero 9'
-}
-numeros_key = numeros.keys()
-
-
 entrada = arquivo.read()
 
 count = 0
@@ -103,14 +88,6 @@ for linha in codigo:
     count = count + 1
 
     tokens = linha.split(' ')
-
-    # for token in tokens:
-    #     if(re.findall(t_Numerals, token)):
-    #         print(token, "-------> Numeral")
-    #     elif(re.findall(t_ID, token)):
-    #         print(token, "-------> Identifiers")
-    #     else:
-    #         print("Unknown Value")
 
     print("\n\n\nLinha", count, "->", linha, "\n")
     print(tokens)
@@ -133,6 +110,3 @@ for linha in codigo:
             print("Token: [", token, "]-> Número")
         elif(re.findall(t_identificador, token)):
             print("Token: [", token, "]-> Identificador")
-
-
-print("\n\n\n\n===============================================================\n\n\n")
