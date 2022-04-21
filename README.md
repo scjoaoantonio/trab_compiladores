@@ -15,3 +15,7 @@
    - Todas as palavras devem ser separadas por um espaço, até mesmo das pontuações.
 
    - O analisador verificará cada linha do código até a quebra de linha, ou seja, não precisa terminar o código com ';'
+
+   - Os comentários são identificados por //
+   
+   -  
