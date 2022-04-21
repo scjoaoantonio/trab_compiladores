@@ -13,8 +13,5 @@
 2. O programa enviado para o analisador deve seguir as seguintes especificações:
 
    - Todas as palavras devem ser separadas por um espaço, até mesmo das pontuações.
-     Exemplo: "./img/img_space.jfif"
 
    - O analisador verificará cada linha do código até a quebra de linha, ou seja, não precisa terminar o código com ';'
-
-   -
