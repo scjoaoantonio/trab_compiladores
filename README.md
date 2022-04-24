@@ -2,7 +2,7 @@
 
 ## Sobre o Trabalho
 
-- Trabalho para a matéria de Compiladores do Curso de Ciências da Computação - UFSJ
+- Trabalho para a matéria de **Compiladores** do Curso de Ciências da Computação - UFSJ
 - Analisador Léxico para uma linguagem descrita como "Mini-C" programada em Python
 - Para compilar digite no terminal: python main.py
   - Requer instalado: Python
