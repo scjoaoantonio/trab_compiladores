@@ -1,9 +1,0 @@
-// Exemplo de programa
-void main ( )
-{
-    int 1teste ;
-    float teste
-    a = 100 + 10 ;
-    b = 1,5 ;
-    c = -2 ;
-}
