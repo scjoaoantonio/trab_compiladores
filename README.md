@@ -21,13 +21,13 @@
    - Os comentários são identificados por // e devem ser escritos no início da linha do código
 
    - Qualquer palavra que não está na lista abaixo será considerada um erro léxico:
-     1. Números
-     2. Identificadores (palavras que não começam com caracteres especiais)
-     3. Palavras reservadas em C (while, for, if, else, return, break, continue, switch, case, printf, scanf, void, main)
-     4. Operadores matemáticos e lógicos
-     5. Tipo de variável (int, float, double, float, long, char, "const")
-     6. Pontuação
-     7. Comentário
+     a) Números
+     b) Identificadores (palavras que não começam com caracteres especiais)
+     c) Palavras reservadas em C (while, for, if, else, return, break, continue, switch, case, printf, scanf, void, main)
+     d) Operadores matemáticos e lógicos
+     e) Tipo de variável (int, float, double, float, long, char, "const")
+     f) Pontuação
+     g) Comentário
 
 ## Exemplo
 ###Entrada do Programa
