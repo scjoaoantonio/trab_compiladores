@@ -4,6 +4,7 @@
 
 - Trabalho para a matéria de **Compiladores** do Curso de Ciências da Computação - UFSJ
 - Analisador Léxico para uma linguagem descrita como "Mini-C" programada em Python
+- O código todo comentado e explicado está em "commented_code.py"
 - Para compilar digite no terminal: python main.py
   - Requer instalado: Python
 
@@ -11,7 +12,7 @@
 
 #### Regras:
 
-1. O Analisador Léxico recebe como código-fonte o programa contido no arquivo "lexico.txt"
+1. O Analisador Léxico recebe como código-fonte o programa contido no arquivo "lexico.txt" dentro da pasta "input"
 2. O programa enviado para o analisador deve seguir as seguintes especificações:
 
    - Tudo que estiver escrito deve ser separado por um espaço, até mesmo das pontuações.
