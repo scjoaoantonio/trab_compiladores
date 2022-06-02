@@ -1,15 +1,15 @@
 // Exemplo de programa
 void main ( ) {
-    int variavel ;
+    int variavel [ i ] ;
     a = 301 + 100 ;
     b = 1,5 * 2 ;
     c = 0 / 1 ;
     for ( int i = 0 ; i < 10 ; i ++ ) {
         if ( i != 2 )
-            a = 2
-        if ( i == 2 )
-            b = 0
+            a = 2 ;
+        if ( i == 2 ) {
+            b = 0 ;
+        }
     }
-    float 0nome ;
-    double @teste ;
+    printf ( "OK!" )
 }
