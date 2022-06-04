@@ -10,6 +10,8 @@ void main ( ) {
         if ( i == 2 ) {
             b = 0 ;
         }
+    for a + 2 {
+        printf ( "a" ) ;
     } ;
     printf { "OK!" }
 }
