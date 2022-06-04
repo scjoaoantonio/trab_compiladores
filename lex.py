@@ -1,17 +1,33 @@
-import re
-#from parser import analisadorsintatico
+# ----------------------------------------------------------------------------
+# Compiladores - UFSJ
+# Created Date: 04 / 2022
+# Updated Date: 06 / 2022
+# Language: Python
+# Version = '2.0'
+# Created By  : João Antônio Santos Carvalho
+# ----------------------------------------------------------------------------
 
+# Importação do REGEX para funções regulares
+import re
+
+# Abrir e ler o arquivo de entrada
 arquivo = open("./input/lexico.txt")
-#arquivo = open("./input/lexerror.txt")
+# arquivo = open("./input/lexicoerror.txt")
 entrada = arquivo.read()
 
+# Declaração de listas vazias, tokens e colunas
 l_token = []
+col_token = []
 
+# Expressão regular para identificar números, identificadores e literais
+# São considerados numeros inteiros, positivos, negativos e separados por vírgula em até 20 casas decimais
+# São considerados como identificadores, palavras não iniciadas por números ou caracteres especiais
+# São considerados como literais, palavras seguidas de aspas
 t_numeros = "^(0(,\d{0,2})?|-?[1-9]\d*(,\d{1,20})?|-0,(0[1-9]|[1-9]\d?))$"
 t_identificador = "^[a-zA-Z_]+[a-zA-Z0-9_]*"
 t_literal = r"[\"]+[%\w\s]+[\"]*"
 
-
+# Tokens (palavras reservadas)
 reservadas = {
     'while': 'Comando de Laço',
     'for': 'Comando de Laço',
@@ -26,7 +42,7 @@ reservadas = {
 }
 reservadas_key = reservadas.keys()
 
-
+# Tokens (operadores)
 operadores = {
     '+': 'Operador de Soma',
     '-': 'Operador de Subtração',
@@ -56,6 +72,7 @@ operadores_mudanca = {
 }
 operadores_mudanca_key = operadores_mudanca.keys()
 
+# Tokens (operadores lógicos)
 operadores_logicos = {
     '&&': 'AND Lógico',
     '||': 'OR Lógico',
@@ -63,6 +80,7 @@ operadores_logicos = {
 }
 operadores_logicos_key = operadores_logicos.keys()
 
+# Tokens (tipos de variáveis)
 tipo_variavel = {
     'int': 'Tipo Inteiro',
     'float': 'Tipo Float',
@@ -75,6 +93,7 @@ tipo_variavel = {
 }
 tipo_variavel_key = tipo_variavel.keys()
 
+# Tokens (pontuação)
 pontuacao = {
     ':': 'Dois pontos',
     ';': 'Ponto e Virgula',
@@ -103,18 +122,34 @@ pontuacao_close = {
 }
 pontuacao_close_key = pontuacao_close.keys()
 
+# Tokens (comentário)
 comentario = {
     '//': 'Comentário'
 }
 comentario_key = comentario.keys()
 
-aspas = {
-    '"': 'Aspas duplas'
-}
-aspas_key = aspas.keys()
+
+# Função para indicar erro no léxico do código
+def erro():
+    print("Erro encontrado na linha", contador_linha,
+          "\nPalavra não identificada:", token)
+
+
+# Função para adicionar o token na lista de tokens
+def addtoken(token):
+    l_token.append(token)
+
+
+# Declaração de variáveis para a contagem de linhas, colunas, tokens
 contador_linha = 0
 contador_coluna = 0
 count_token = 0
+temp = 0
+
+# O programa vai ler até o final da linha e identificar os tokens (separados por um "espaço")
+# Vai ver todos os tokens e se não for identificado como palavra reservada irá ser considerado como erro léxico
+# Se tiver um comentário, irá ignorar a linha e considerá-la um comentário.
+# Se identificar uma palavra reservada, vai enviá-la como saída do programa
 codigo = entrada.split("\n")
 for linha in codigo:
     contador_linha = contador_linha + 1
@@ -134,83 +169,82 @@ for linha in codigo:
                                 if not(re.findall(t_numeros, token)):
                                     if not(re.findall(t_literal, token)):
                                         if(len(token) != 0):
-                                            print(
-                                                "Erro encontrado na linha", contador_linha, "e coluna", contador_coluna, "\nPalavra não identificada:", token)
-    for token in tokens:
-        if token in operadores_key:
-            print("Token: [", token, "]-> Operador ->", operadores[token])
-            l_token.append(token)
-            count_token = count_token + 1
-            contador_coluna += 1
+                                            erro()
+                                        else:
+                                            temp = 1
 
-        elif token in operadores_logicos_key:
-            print("Token: [", token, "]-> Operador Lógico ->",
-                  operadores_logicos[token])
-            l_token.append(token)
-            count_token = count_token + 1
-            contador_coluna += 1
+    if (temp == 1):
+        for token in tokens:
+            if token in operadores_key:
+                count_token = count_token + 1
+                contador_coluna += len(token) + 1
+                col_token = contador_coluna - len(token)
+                print("[", contador_linha, col_token, "]"" Token: [",
+                      token, "]-> Operador ->", operadores[token])
+                addtoken(token)
 
-        elif token in tipo_variavel_key:
-            print("Token: [", token, "]-> Variavel ->", tipo_variavel[token])
-            l_token.append(token)
-            count_token = count_token + 1
-            contador_coluna += 1
+            elif token in operadores_logicos_key:
+                addtoken(token)
+                count_token = count_token + 1
+                contador_coluna += len(token) + 1
+                col_token = contador_coluna - len(token)
+                print("[", contador_linha, col_token, "]"" Token: [", token, "]-> Operador Lógico ->",
+                      operadores_logicos[token])
 
-        elif token in pontuacao_key:
-            print("Token: [", token, "]-> Pontuacao ->", pontuacao[token])
-            l_token.append(token)
-            count_token = count_token + 1
-            contador_coluna += 1
+            elif token in tipo_variavel_key:
+                addtoken(token)
+                count_token = count_token + 1
+                contador_coluna += len(token) + 1
+                col_token = contador_coluna - len(token)
+                print("[", contador_linha, col_token, "]"" Token: [", token, "]-> Variavel ->",
+                      tipo_variavel[token])
 
-        elif token in reservadas_key:
-            print("Token: [", token, "]-> Palavra reservada ->",
-                  reservadas[token])
-            l_token.append(token)
-            count_token = count_token + 1
-            contador_coluna += 1
+            elif token in pontuacao_key:
+                addtoken(token)
+                count_token = count_token + 1
+                contador_coluna += len(token) + 1
+                col_token = contador_coluna - len(token)
+                print("[", contador_linha, col_token, "]"" Token: [",
+                      token, "]-> Pontuacao ->", pontuacao[token])
 
-        elif(re.findall(t_numeros, token)):
-            print("Token: [", token, "]-> Número")
-            l_token.append(token)
-            count_token = count_token + 1
-            contador_coluna += 1
+            elif token in reservadas_key:
+                addtoken(token)
+                count_token = count_token + 1
+                contador_coluna += len(token) + 1
+                col_token = contador_coluna - len(token)
+                print("[", contador_linha, col_token, "]"" Token: [", token, "]-> Palavra reservada ->",
+                      reservadas[token])
 
-        elif(re.findall(t_identificador, token)):
-            print("Token: [", token, "]-> Identificador")
-            l_token.append(token)
-            count_token = count_token + 1
-            contador_coluna += 1
+            elif(re.findall(t_numeros, token)):
+                addtoken(token)
+                count_token = count_token + 1
+                contador_coluna += len(token) + 1
+                col_token = contador_coluna - len(token)
+                print("[", contador_linha, col_token,
+                      "]"" Token: [", token, "]-> Número")
 
-        elif(re.findall(t_literal, token)):
-            print("Token: [", token, "]-> Literal")
-            l_token.append(token)
-            count_token = count_token + 1
-            contador_coluna += 1
+            elif(re.findall(t_identificador, token)):
+                addtoken(token)
+                count_token = count_token + 1
+                contador_coluna += len(token) + 1
+                col_token = contador_coluna - len(token)
+                print("[", contador_linha, col_token,
+                      "]"" Token: [", token, "]-> Identificador")
 
-    contador_coluna = 0
+            elif(re.findall(t_literal, token)):
+                addtoken(token)
+                count_token = count_token + 1
+                contador_coluna += len(token) + 1
+                col_token = contador_coluna - len(token)
+                print("[", contador_linha, col_token,
+                      "]"" Token: [", token, "]-> Literal")
+        contador_coluna = 0
 
-'''
-             
-"""Identifica Literal"""
-   if estado is 3:
-            if re.match(r"[%a-zA-z0-9\"\s]", k):
-                token = token + k
-                if re.match(r"[\"]", k):
-                    lit = re.match(r"[\"]+[%\w\s]+[\"]*", token)
-                    if lit is not None:
-                        tabela_token[id_tabela] = ["Literal", lit.group(
-                        ), add_linha_coluna(lit.group(), linha, coluna)]
 
-                        token_geral.append(
-                            ["Literal", lit.group(), id_tabela])
-                        token = ""
-                        estado = 0
-'''
-
+# Salvar os tokens em um arquivo separado
 with open('tokens.txt', 'w') as temp_file:
     for item in l_token:
         temp_file.write("%s\n" % item)
 
-print("\n\n\n")
 
-# analisadorsintatico()
+print("\n\n\n")
