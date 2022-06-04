@@ -1,0 +1,13 @@
+// Exemplo de programa
+    void main ( ) {
+        int variavel ;
+        a = 301 + 100 ;
+        b = 1,5 * 2 ;
+        c = 0 / 1 ;
+        for ( int i = 0 ; i < 10 ; i ++ ) {
+            if ( i != 2 )
+                a = 2 ;
+            if ( i == 2 )
+                b = 0 ;
+        }
+    }
