@@ -1,10 +1,9 @@
-# Analisador Léxico
+# Compilador
 
 ## Sobre o Trabalho
 
 - Trabalho para a matéria de **Compiladores** do Curso de Ciências da Computação - UFSJ
-- Analisador Léxico para uma linguagem descrita como "Mini-C" programada em Python
-- O código todo comentado e explicado está em "commented_code.py"
+- Analisador Léxico e Sintático para uma linguagem descrita como "Mini-C" programada em Python
 - Para compilar digite no terminal: python main.py
   - Requer instalado: Python
 
@@ -15,11 +14,11 @@
 1. O Analisador Léxico recebe como código-fonte o programa contido no arquivo "lexico.txt" dentro da pasta "input"
 2. O programa enviado para o analisador deve seguir as seguintes especificações:
 
-   - Tudo que estiver escrito deve ser separado por um espaço, até mesmo das pontuações.
-
    - O analisador verificará cada linha do código até a quebra de linha
 
    - Os comentários são identificados por // e devem ser escritos no início da linha do código
+
+   - Tudo que estiver escrito deve ser separado por um espaço, até mesmo das pontuações.
 
    - Qualquer palavra que não está na lista abaixo será considerada um erro léxico:
      1. Números
@@ -30,7 +29,10 @@
      6. Pontuação
      7. Comentário
 
+3. O Analisador Sintático irá verificar a ordem dos tokens e indicar erro preciso
+
 ## Exemplo
+
 ### Entrada do Programa
 
 ![WhatsApp Image 2022-04-25 at 18 02 39](https://user-images.githubusercontent.com/65183458/165174914-a50ef26f-28be-4fb0-be3b-c111600283bc.jpeg)
