@@ -11,7 +11,7 @@
 import re
 
 # Abrir e ler o arquivo de entrada
-arquivo = open("./input/lexico.txt")
+arquivo = open("./input/lexicoerror.txt")
 # arquivo = open("./input/lexicoerror.txt")
 entrada = arquivo.read()
 

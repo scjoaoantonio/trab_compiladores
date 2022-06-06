@@ -102,7 +102,7 @@ for i in range(num_tokens):
                         error(l_tokens[i], l_tokens[i+1])
         elif(l_tokens[i] == '}'):
             if(i == num_tokens - 1):
-                print("Fim da Análise")
+                print("\n\nFim da Análise\n\n")
                 break
             else:
                 if not(re.findall(lex.t_numeros, l_tokens[i+1])):
