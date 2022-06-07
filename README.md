@@ -29,7 +29,7 @@
      6. Pontuação
      7. Comentário
 
-3. O Analisador Sintático irá verificar a ordem dos tokens e indicar erro preciso
+3. O Analisador Sintático irá verificar a ordem dos tokens e indicar os erros se preciso
 
 ## Exemplo
 
