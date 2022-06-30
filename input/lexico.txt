@@ -1,6 +1,9 @@
 // Exemplo de programa
     void main ( ) {
-        int variavel ;
+        int variavel = 1 ;
+        float a = 2 ; 
+        int b = 3 ; 
+        float c = 4 ; 
         a = 301 + 100 ;
         b = 1,5 * 2 ;
         c = 0 / 1 ;
