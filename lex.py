@@ -11,13 +11,13 @@
 import re
 
 # Abrir e ler o arquivo de entrada
-arquivo = open("./input/lexicoerror.txt")
-# arquivo = open("./input/lexicoerror.txt")
+arquivo = open("./input/lexico.txt")
 entrada = arquivo.read()
 
 # Declaração de listas vazias, tokens e colunas
 l_token = []
 col_token = []
+
 
 # Expressão regular para identificar números, identificadores e literais
 # São considerados numeros inteiros, positivos, negativos e separados por vírgula em até 20 casas decimais
@@ -90,6 +90,7 @@ tipo_variavel = {
     'char': 'Caractere',
     'const': 'Constante',
     'void': 'Parâmetro Vazio'
+
 }
 tipo_variavel_key = tipo_variavel.keys()
 
