@@ -1,0 +1,4 @@
+.data
+loadi $r0, 2
+loadi $r1, 0
+msg0: .asciiz "JOAO"

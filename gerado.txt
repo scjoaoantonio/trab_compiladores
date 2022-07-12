@@ -1,0 +1,28 @@
+.data
+loadi $r0, 2
+loadi $r1, 0
+msg0: .asciiz "JOAO"
+
+
+.text
+# Exemplo de programa
+label0:
+mov $t1, $r1
+mov $t2, 10
+blt $t1, $t2, saida0
+mov $t1, $r1
+mov $t2, 1
+add $r1,$t1, $t2
+label1:
+mov $t1, $r1
+mov $t2, 2
+beq $t1, $t2, saida1
+li $v0, 4
+la $a0, msg0
+syscall
+jump label1:
+saida1:
+jump label0:
+saida0:
+
+li $v0, 10

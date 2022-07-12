@@ -9,6 +9,7 @@
 
 # Importação do REGEX para funções regulares
 import re
+import gerador
 
 # Abrir e ler o arquivo de entrada
 arquivo = open("./input/lexico.txt")
@@ -18,6 +19,11 @@ entrada = arquivo.read()
 l_token = []
 col_token = []
 
+with open('codigo.txt', 'w') as codigo:
+    codigo.write('.data\n')
+
+with open('codigo2.txt', 'w') as codigo:
+    codigo.write('\n\n.text\n')
 
 # Expressão regular para identificar números, identificadores e literais
 # São considerados numeros inteiros, positivos, negativos e separados por vírgula em até 20 casas decimais
@@ -160,6 +166,7 @@ for linha in codigo:
     for token in tokens:
         if token in comentario_key:
             print("Token: [", token, "]-> Comentário ->", linha)
+            gerador.gerarcomentario(linha)
             tokens = " "
         elif (token not in operadores_key):
             if (token not in operadores_logicos_key):
