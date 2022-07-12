@@ -1,24 +1,28 @@
 # ----------------------------------------------------------------------------
 # Compiladores - UFSJ
 # Created Date: 04 / 2022
-# Updated Date: 06 / 2022
+# Updated 2.0 Date: 06 / 2022
+# Updated 3.0 Date: 07 / 2022
 # Language: Python
-# Version = '2.0'
+# Version = '3.0'
 # Created By  : João Antônio Santos Carvalho
 # ----------------------------------------------------------------------------
 
 # Importação do REGEX para funções regulares
 import re
+# Importação de funções do gerador de código
 import gerador
 
 # Abrir e ler o arquivo de entrada
-arquivo = open("./input/lexico.txt")
+arquivo = open("./input/lexicoerrosemantico.txt")
+# arquivo = open("./input/lexico.txt")
 entrada = arquivo.read()
 
 # Declaração de listas vazias, tokens e colunas
 l_token = []
 col_token = []
 
+# O programa assim que ser inicializado irá abir e limpar 2 arquivos diferentes para a geração do código na linguagem de máquina, um irá gerar os códigos referentes ao .data e o outro ao .text
 with open('codigo.txt', 'w') as codigo:
     codigo.write('.data\n')
 
@@ -155,7 +159,7 @@ temp = 0
 
 # O programa vai ler até o final da linha e identificar os tokens (separados por um "espaço")
 # Vai ver todos os tokens e se não for identificado como palavra reservada irá ser considerado como erro léxico
-# Se tiver um comentário, irá ignorar a linha e considerá-la um comentário.
+# Se tiver um comentário, irá ignorar a linha e considerá-la um comentário, além de mandá-la para o gerador transformar o comentário em C em um comentário em Assembly
 # Se identificar uma palavra reservada, vai enviá-la como saída do programa
 codigo = entrada.split("\n")
 for linha in codigo:

@@ -1,5 +1,7 @@
+# Importações para identificar palavras específicas
 import re
 from sre_constants import LITERAL
+# Importações para executar funções de outros arquivos
 import lex
 import gerador
 
@@ -30,6 +32,7 @@ def erro_semantico(tipo, erro):
         print("Erro identificado, variável declarada mas não usada:", erro)
 
 
+# Declaração de variáveis e listas para armazenamento de dados
 temp_label = 0
 cont_label = 0
 cont_texto = 0
@@ -44,6 +47,8 @@ l_usos = []
 
 
 # Verificação do sintático dos tokens, irá ler token por token, indentificar seu tipo e verificar a compatibilidade dele com o próximo token
+# Fará também a análise semântica, verificando se as variáveis estão sendo usadas corretamente
+# Além disso após identificar a função sintática do token, vai executar a geração de código, mandando os tokens, e suas funções
 for i in range(num_tokens):
 
     if(l_tokens[i] in lex.comentario_key):
@@ -61,11 +66,11 @@ for i in range(num_tokens):
             cont_label += 1
             temp_label += 1
         if(l_tokens[i] == 'while'):
-            gerador.gerarfor(cont_label)
+            gerador.gerarwhile(cont_label)
             cont_label += 1
             temp_label += 1
         if(l_tokens[i] == 'if'):
-            gerador.gerarfor(cont_label)
+            gerador.gerarif(cont_label)
             cont_label += 1
             temp_label += 1
     elif(l_tokens[i] in lex.operadores_key):
@@ -288,6 +293,7 @@ for i in range(num_tokens):
                 print("Finalização incorreta do programa!")
 
 
+# Verificação do uso de variáveis nao registradas
 for i in range(num_tokens):
     if(re.findall(lex.t_identificador, l_tokens[i])):
         if(l_tokens[i+1] != "("):
@@ -296,16 +302,18 @@ for i in range(num_tokens):
             elif(l_tokens[i] not in l_variaveis):
                 erro_semantico("2", l_tokens[i])
 
+# Verificação de variáveis declaradas mas não usadas
 for j in range(num_tokens):
     for i in range(len(l_variaveis)):
         if(l_tokens[j] == l_variaveis[i]):
             l_usos[i] += 1
-
 for i in range(len(l_usos)):
     if(l_usos[i] == 1):
         erro_semantico('5', l_variaveis[i])
 
+# Verifica se corresponde a quantidade de funções abertas e fechadas
 if(cont_abrir != cont_fechar):
-    erro_sintatico('Verifique os itens', '"()","{}","[]"')
+    erro_sintatico('Verifique os itens', '"(,)","{,}","[,]"')
 
+# Depois do fim das análises, essa função irá juntar os 2 arquivos criados (.data, .text)
 gerador.juntarcodigos()
