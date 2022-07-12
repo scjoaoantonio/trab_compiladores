@@ -1,0 +1,17 @@
+// Exemplo de programa
+    void main ( ) {
+        float a = 2 ; 
+        int b = 3 ; 
+        float c = 4 ; 
+        a = 301 - 100 ;
+        b = 1,5 * 2 ;
+        c = 0 / 1 ;
+        for ( int i = 0 ; i < 10 ; i ++ ) {
+            if ( a == 2 ) {
+                a = 2 ;
+            }
+        }
+        printf ( "JOAO" ) ;
+        printf ( "J" ) ;
+        printf ( "251" ) ;
+    }
