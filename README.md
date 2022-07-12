@@ -1,4 +1,3 @@
-# TRABALHO EM ANDAMENTO!! NÃO ESTÁ PRONTO AINDA
 # Compilador
 
 ## Sobre o Trabalho
@@ -31,6 +30,29 @@
      7. Comentário
 
 3. O Analisador Sintático irá verificar a ordem dos tokens e indicar os erros se preciso
+
+4. A geração de código funciona da seguinte forma:
+  - O programa identificará a linha de código no analisador sintático e vai mandar para "gerador.py"
+  - O gerador irá converter o código de C para linguagem de máquina
+  - Declaração e atribuição pertencerão à parte .data e as outras funções ao .text
+
+5. O gerador de código possui limitações, mas ele poderá gerar:
+  - Atribuição
+  - Declaração
+  - Comparação
+  - Condição
+  - Laços de repetição
+  - Escrita (printf)
+  - Comentário
+
+6. Sobre o Analisador Semântico:
+  - O analisador semântico está contido no analisador sintático
+  - Identificará os seguintes erros:
+    1. Variável já registrada
+    2. Variável não registrada
+    3. Variável não inicializada
+    4. Variável declarada mas não usada
+    5. Código inalcançável (Divisão por 0): (Warning) 
 
 ## Exemplo
 
