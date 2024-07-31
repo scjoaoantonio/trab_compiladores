@@ -14,7 +14,7 @@ import re
 import gerador
 
 # Abrir e ler o arquivo de entrada
-arquivo = open("./input/lexicoerrosemantico.txt")
+arquivo = open("./input/lexico.txt")
 # arquivo = open("./input/lexico.txt")
 entrada = arquivo.read()
 
