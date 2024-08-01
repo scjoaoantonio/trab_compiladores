@@ -1,25 +1,37 @@
 # Importação do REGEX
 import re
+import os
 
 # Criação de listas para armazenamento de dados
 cod_variaveis = []
 lex_variaveis = []
 re_numeros = "^(0(,\d{0,2})?|-?[1-9]\d*(,\d{1,20})?|-0,(0[1-9]|[1-9]\d?))$"
 
+def remove_files():
+    files_to_remove = ['codigo1.txt', 'codigo2.txt','tokens.txt']
+    for file in files_to_remove:
+        try:
+            os.remove(file)
+        except FileNotFoundError:
+            print(f"{file} not found, skipping.")
+        except Exception as e:
+            print(f"Error removing {file}: {e}")
+            
 # Função para juntar os arquivos .data e .text
 def juntarcodigos():
-    with open("gerado.txt", "w") as arq:
-        with open("codigo.txt", "r") as arq1:
+    with open("./output/codigo.txt", "w") as arq:
+        with open("codigo1.txt", "r") as arq1:
             arq.write(arq1.read())
         with open("codigo2.txt", "r") as arq2:
             arq.write(arq2.read())
+    remove_files()
 
 # Função para gerar declaração / atribuição de variáveis
 def gerardeclaracao(cont, variavel, valor):
     lex_variaveis.append(str(variavel))
     cod_variaveis.append("$r" + str(cont))
     variavel = "loadi $r" + str(cont)
-    with open('codigo.txt', 'a') as codigo:
+    with open('codigo1.txt', 'a') as codigo:
         codigo.write(variavel + ', ' + valor + '\n')
 
 # Função para adaptar a soma em C para soma em linguagem de máquina
@@ -156,7 +168,7 @@ def gerarprint(texto, numtexto):
     literal = texto.translate(str.maketrans('', '', ''.join(p_token)))
     nometexto = "msg" + str(numtexto)
     if re.findall(re_numeros, literal):
-        with open('codigo.txt', 'a') as codigo:
+        with open('codigo1.txt', 'a') as codigo:
             codigo.write(nometexto + ': .word "' + literal + '"\n')
         with open('codigo2.txt', 'a') as codigo:
             codigo.write('li $v0, 1\n')
@@ -164,10 +176,10 @@ def gerarprint(texto, numtexto):
             codigo.write('syscall\n')
     else:
         if len(literal) > 1:
-            with open('codigo.txt', 'a') as codigo:
+            with open('codigo1.txt', 'a') as codigo:
                 codigo.write(nometexto + ': .asciiz "' + literal + '"\n')
         elif len(literal) <= 1:
-            with open('codigo.txt', 'a') as codigo:
+            with open('codigo1.txt', 'a') as codigo:
                 codigo.write(nometexto + ': .byte "' + literal + '"\n')
         with open('codigo2.txt', 'a') as codigo:
             codigo.write('li $v0, 4\n')

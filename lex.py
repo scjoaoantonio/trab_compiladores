@@ -1,13 +1,3 @@
-# ----------------------------------------------------------------------------
-# Compiladores - UFSJ
-# Created Date: 04 / 2022
-# Updated 2.0 Date: 06 / 2022
-# Updated 3.0 Date: 07 / 2022
-# Language: Python
-# Version = '3.0'
-# Created By  : João Antônio Santos Carvalho
-# ----------------------------------------------------------------------------
-
 # Importação do REGEX para funções regulares
 import re
 # Importação de funções do gerador de código
@@ -23,7 +13,7 @@ l_token = []
 col_token = []
 
 # O programa assim que ser inicializado irá abir e limpar 2 arquivos diferentes para a geração do código na linguagem de máquina, um irá gerar os códigos referentes ao .data e o outro ao .text
-with open('codigo.txt', 'w') as codigo:
+with open('./output/codigo.txt', 'w') as codigo:
     codigo.write('.data\n')
 
 with open('codigo2.txt', 'w') as codigo:
