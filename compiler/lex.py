@@ -1,7 +1,7 @@
 # Importação do REGEX para funções regulares
 import re
 # Importação de funções do gerador de código
-import gerador
+from compiler import gerador
 import sys
 
 # Redirecionar a saída padrão para o arquivo 'saida.txt'

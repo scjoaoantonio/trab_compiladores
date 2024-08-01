@@ -10,7 +10,7 @@
 # ----------------------------------------------------------------------------
 
 import sys
-import sintatico
+from compiler import sintatico
 
 def main():
     if len(sys.argv) != 2:

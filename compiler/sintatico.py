@@ -2,8 +2,8 @@
 import re
 from sre_constants import LITERAL
 # Importações para executar funções de outros arquivos
-import lex
-import gerador
+from compiler import lex
+from compiler import gerador
 
 # Ler o arquivo de tokens enviado pelo léxico e convertê-lo a uma lista
 l_tokens = list(open('tokens.txt', 'r'))
