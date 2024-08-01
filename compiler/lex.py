@@ -158,7 +158,7 @@ for linha in codigo:
     contador_linha = contador_linha + 1
     tokens = linha.split(' ')
 
-    print("\n\n\nLinha", contador_linha, "->", linha, "\n")
+    print("Linha", contador_linha, "->", linha, "\n")
     for token in tokens:
         if token in comentario_key:
             print("Token: [", token, "]-> Comentário ->", linha)
