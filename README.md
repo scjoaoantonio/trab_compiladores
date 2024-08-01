@@ -4,8 +4,8 @@
 
 - Trabalho para a matéria de **Compiladores** do Curso de Ciências da Computação - UFSJ
 - Analisador Léxico, Sintático, Semântico e Gerador de Código para uma linguagem descrita como "Mini-C" programada em Python
-- Para compilar digite no terminal: python main.py
-  - Requer instalado: Python
+- Para compilar digite no terminal: `python3 main.py` ou `make run`
+  - Requer instalado: Python3
 
 ## Sobre o Programa
 
@@ -32,27 +32,30 @@
 3. O Analisador Sintático irá verificar a ordem dos tokens e indicar os erros se preciso
 
 4. A geração de código funciona da seguinte forma:
-  - O programa identificará a linha de código no analisador sintático e vai mandar para "gerador.py"
-  - O gerador irá converter o código de C para linguagem de máquina
-  - Declaração e atribuição pertencerão à parte .data e as outras funções ao .text
+
+- O programa identificará a linha de código no analisador sintático e vai mandar para "gerador.py"
+- O gerador irá converter o código de C para linguagem de máquina
+- Declaração e atribuição pertencerão à parte .data e as outras funções ao .text
 
 5. O gerador de código possui limitações, mas ele poderá gerar:
-  - Atribuição
-  - Declaração
-  - Comparação
-  - Condição
-  - Laços de repetição
-  - Escrita (printf)
-  - Comentário
+
+- Atribuição
+- Declaração
+- Comparação
+- Condição
+- Laços de repetição
+- Escrita (printf)
+- Comentário
 
 6. Sobre o Analisador Semântico:
-  - O analisador semântico está contido no analisador sintático
-  - Identificará os seguintes erros:
-    1. Variável já registrada
-    2. Variável não registrada
-    3. Variável não inicializada
-    4. Variável declarada mas não usada
-    5. Código inalcançável (Divisão por 0): (Warning) 
+
+- O analisador semântico está contido no analisador sintático
+- Identificará os seguintes erros:
+  1. Variável já registrada
+  2. Variável não registrada
+  3. Variável não inicializada
+  4. Variável declarada mas não usada
+  5. Código inalcançável (Divisão por 0): (Warning)
 
 ## Exemplo
 
