@@ -2,10 +2,13 @@
 import re
 # Importação de funções do gerador de código
 import gerador
+import sys
+
+# Redirecionar a saída padrão para o arquivo 'saida.txt'
+sys.stdout = open('./output/codetokens.txt', 'w')
 
 # Abrir e ler o arquivo de entrada
 arquivo = open("./input/lexico.txt")
-# arquivo = open("./input/lexico.txt")
 entrada = arquivo.read()
 
 # Declaração de listas vazias, tokens e colunas
@@ -90,7 +93,6 @@ tipo_variavel = {
     'char': 'Caractere',
     'const': 'Constante',
     'void': 'Parâmetro Vazio'
-
 }
 tipo_variavel_key = tipo_variavel.keys()
 
@@ -248,5 +250,6 @@ with open('tokens.txt', 'w') as temp_file:
     for item in l_token:
         temp_file.write("%s\n" % item)
 
-
-print("\n\n\n")
+# Fechar o arquivo de saída
+sys.stdout.close()
+sys.stdout = sys.__stdout__
