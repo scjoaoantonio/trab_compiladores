@@ -1,2 +1,6 @@
+# Ignorar
 __pycache__/
 output/
+
+# Excessões
+!output/__init__.txt
