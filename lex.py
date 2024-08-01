@@ -13,7 +13,7 @@ l_token = []
 col_token = []
 
 # O programa assim que ser inicializado irá abir e limpar 2 arquivos diferentes para a geração do código na linguagem de máquina, um irá gerar os códigos referentes ao .data e o outro ao .text
-with open('./output/codigo.txt', 'w') as codigo:
+with open('codigo1.txt', 'w') as codigo:
     codigo.write('.data\n')
 
 with open('codigo2.txt', 'w') as codigo:

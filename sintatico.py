@@ -12,24 +12,29 @@ l_tokens = [s.rstrip() for s in l_tokens]
 # Contagem de tokens
 num_tokens = len(l_tokens)
 
+# Nome do arquivo de log
+log_file = './output/erros.txt'
+with open(log_file, 'w') as f:
+    f.write('')  # Limpa o arquivo
 
-# Função para indicar o erro sintatico
+def log_erro(mensagem):
+    with open(log_file, 'a') as f:
+        f.write(mensagem + '\n')
+
 def erro_sintatico(erro, erro2):
-    print('Erro identificado:', erro, erro2)
+    mensagem = f'Erro identificado: {erro}, {erro2}'
+    log_erro(mensagem)
 
-
-# Função para indicar o erro semantico
 def erro_semantico(tipo, erro):
-    if (tipo == "1"):
-        print("Erro identificado, variável ja registrada:", erro)
-    if (tipo == "2"):
-        print("Erro identificado, variável nao registrada:", erro)
-    if (tipo == "3"):
-        print("Erro identificado, variável nao inicializada:", erro)
-    if (tipo == "4"):
-        print("WARNING! Código inalcançável", erro)
-    if (tipo == "5"):
-        print("Erro identificado, variável declarada mas não usada:", erro)
+    mensagens = {
+        "1": f"Erro identificado, variável já registrada: {erro}",
+        "2": f"Erro identificado, variável não registrada: {erro}",
+        "3": f"Erro identificado, variável não inicializada: {erro}",
+        "4": f"WARNING! Código inalcançável: {erro}",
+        "5": f"Erro identificado, variável declarada mas não usada: {erro}"
+    }
+    mensagem = mensagens.get(tipo, "Erro desconhecido")
+    log_erro(mensagem)
 
 
 # Declaração de variáveis e listas para armazenamento de dados
